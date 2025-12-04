@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore Dependencies
-        run: dotnet restore ./home/runner/work/DDD-program/DDD-program.sln
+        run: dotnet restore ./home/runner/work/DDD-program/DDD-program
 
       - name: Build Solution
-        run: dotnet build ./home/runner/work/DDD-program/DDD-program.sln --no-restore
+        run: dotnet build ./home/runner/work/DDD-program/DDD-program --no-restore
 
       - name: Run Tests
-        run: dotnet test ./home/runner/work/DDD-program/DDD-program.sln --no-build --verbosity normal
+        run: dotnet test ./home/runner/work/DDD-program/DDD-program --no-build --verbosity normal
