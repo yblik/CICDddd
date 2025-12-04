@@ -1746,9 +1746,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\benk\\Source\\Repos\\UnitTest\\UnitTest.csproj",
-      "projectName": "UnitTest",
-      "projectPath": "C:\\Users\\benk\\Source\\Repos\\UnitTest\\UnitTest.csproj",
+      "projectUniqueName": "C:\\Users\\benk\\Source\\Repos\\UnitTest\\UnitTestOld.csproj",
+      "projectName": "UnitTestOld",
+      "projectPath": "C:\\Users\\benk\\Source\\Repos\\UnitTest\\UnitTestOld.csproj",
       "packagesPath": "C:\\Users\\benk\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\benk\\Source\\Repos\\UnitTest\\obj\\",
       "projectStyle": "PackageReference",
