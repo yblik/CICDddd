@@ -24,27 +24,31 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          key: ${{ runner.os }}-nuget-${{ hashFiles('DDD-program/**/*.csproj') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
 
       - name: Install native deps (Linux)
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libsqlite3-0
+        run: sudo apt-get update && sudo apt-get install -y libsqlite3-0 libsqlite3-dev
 
+      # 🔥 IMPORTANT: Your solution is in ./DDD-program/
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore "DDD program.sln"
+        working-directory: ./DDD-program
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build "DDD program.sln" --configuration Release --no-restore
+        working-directory: ./DDD-program
 
       - name: Run tests
         run: |
           mkdir -p TestResults
-          dotnet test --configuration Release --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
+          dotnet test "DDD program.sln" --configuration Release --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
+        working-directory: ./DDD-program
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: TestResults/**/*.trx
+          path: ./DDD-program/TestResults/**/*.trx
