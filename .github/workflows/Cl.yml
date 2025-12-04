@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore Dependencies
-        run: dotnet restore CICDddd.sln
+        run: dotnet restore ./DDD-program/DDD-program.sln
 
       - name: Build Solution
-        run: dotnet build CICDddd.sln --no-restore
+        run: dotnet build ./DDD-program/DDD-program.sln --no-restore
 
       - name: Run Tests
-        run: dotnet test CICDddd.sln --no-build --verbosity normal
+        run: dotnet test ./DDD-program/DDD-program.sln --no-build --verbosity normal
