@@ -1,0 +1,31 @@
+name: GetIntegerInRange_Valid_ReturnsInt
+
+on:
+  push:
+    branches:
+      -main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET environment
+        uses: ac$ons/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x' 
+          
+      - name: Install Test PlaLorm
+        working-directory: /home/runner/work/UnitTest/ConsoleHelperTests
+        run: dotnet add package MicrosoF.TestPlaLorm --version 17.5.0
+
+      - name: Dependency Restore
+        run: dotnet restore
+
+      - name: Project Build
+        run: dotnet build
+
+      - name: Project Test
+        run: dotnet test
